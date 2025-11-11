@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "RequestIOClient",
+    name: "RequestIOBusiness",
     platforms: [
         .iOS(.v16),
         .macOS(.v13),
@@ -13,8 +13,8 @@ let package = Package(
     ],
     products: [
         .library(
-            name: "RequestIOClient",
-            targets: ["RequestIOClient"]
+            name: "RequestIOBusiness",
+            targets: ["RequestIOBusiness"]
         )
     ],
     dependencies: [
@@ -33,19 +33,19 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "RequestIOClient",
+            name: "RequestIOBusiness",
             dependencies: [
                 .product(name: "OpenAPIRuntime", package: "swift-openapi-runtime"),
                 .product(name: "OpenAPIURLSession", package: "swift-openapi-urlsession")
             ],
-            path: "Sources/RequestIOClient",
+            path: "Sources/RequestIOBusiness",
             plugins: [
                 .plugin(name: "OpenAPIGenerator", package: "swift-openapi-generator")
             ]
         ),
         .testTarget(
-            name: "RequestIOClientTests",
-            dependencies: ["RequestIOClient"]
+            name: "RequestIOBusinessTests",
+            dependencies: ["RequestIOBusiness"]
         )
     ]
 )

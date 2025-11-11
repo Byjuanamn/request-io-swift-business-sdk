@@ -1,10 +1,12 @@
-# Request-IO Swift SDK
+# Request-IO Business SDK
 
 [![Swift](https://img.shields.io/badge/Swift-6.2-orange.svg)](https://swift.org)
 [![Platforms](https://img.shields.io/badge/Platforms-iOS%20|%20macOS%20|%20watchOS%20|%20tvOS-blue.svg)](https://developer.apple.com)
 [![SPM](https://img.shields.io/badge/SPM-Compatible-brightgreen.svg)](https://swift.org/package-manager)
 
-Swift SDK oficial para la API de Request-IO. Generado automáticamente desde la especificación OpenAPI 3.1.0.
+Swift SDK oficial para la **API de negocio completo** de Request-IO (Core + AlmaVip + Admin). Generado automáticamente desde la especificación OpenAPI 3.1.0.
+
+> **Nota**: Este SDK es para funcionalidad de negocio completo. Para administración exclusiva, ver [`request-io-swift-admin-client`](https://github.com/Byjuanamn/request-io-swift-admin-client).
 
 ## Características
 
@@ -28,14 +30,14 @@ Agrega el paquete a tu `Package.swift`:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/Byjuanamn/request-io-swift-sdk-client.git", from: "1.0.0")
+    .package(url: "https://github.com/Byjuanamn/request-io-swift-business-sdk.git", from: "1.0.0")
 ]
 ```
 
 O en Xcode:
 
 1. File → Add Package Dependencies...
-2. Pega la URL: `https://github.com/Byjuanamn/request-io-swift-sdk-client`
+2. Pega la URL: `https://github.com/Byjuanamn/request-io-swift-business-sdk`
 3. Selecciona "Up to Next Major Version" y especifica `1.0.0`
 
 ## Uso Rápido
@@ -43,7 +45,7 @@ O en Xcode:
 ### Importar el SDK
 
 ```swift
-import RequestIOClient
+import RequestIOBusiness
 import OpenAPIRuntime
 import OpenAPIURLSession
 ```
@@ -184,15 +186,15 @@ let client = Client(
 ## Estructura del Proyecto
 
 ```
-request-io-swift-sdk-client/
+request-io-swift-business-sdk/
 ├── Package.swift                      # Configuración del paquete
 ├── Sources/
-│   └── RequestIOClient/
+│   └── RequestIOBusiness/
 │       ├── openapi.json               # Especificación OpenAPI (auto-actualizada)
 │       ├── openapi-generator-config.yaml  # Configuración del generador
-│       └── RequestIOClient.swift      # Punto de entrada del SDK
+│       └── RequestIOBusiness.swift    # Punto de entrada del SDK
 ├── Tests/
-│   └── RequestIOClientTests/
+│   └── RequestIOBusinessTests/
 └── Examples/                          # (Próximamente) Apps de ejemplo
 ```
 
@@ -206,8 +208,8 @@ cd ../request-io_back
 swift run App serve --env develop.env
 
 # 2. En otra terminal, actualiza el spec
-cd ../request-io-swift-sdk-client
-curl http://localhost:8080/openapi.json -o Sources/RequestIOClient/openapi.json
+cd ../request-io-swift-business-sdk
+curl http://localhost:8080/openapi.json -o Sources/RequestIOBusiness/openapi.json
 
 # 3. Regenera el cliente
 swift build
@@ -247,7 +249,7 @@ Si ves este error al hacer build, significa que el spec OpenAPI está desactuali
 
 ```bash
 # Actualiza el spec desde el backend
-curl http://localhost:8080/openapi.json -o Sources/RequestIOClient/openapi.json
+curl http://localhost:8080/openapi.json -o Sources/RequestIOBusiness/openapi.json
 swift build
 ```
 
@@ -260,7 +262,7 @@ Los warnings sobre `nullable` property son esperados y no afectan el funcionamie
 Este SDK se genera automáticamente. Para contribuir:
 
 1. **Cambios en la API**: Modifica el backend en `request-io_back`
-2. **Wrappers personalizados**: Agrega extensiones en `Sources/RequestIOClient/Extensions/`
+2. **Wrappers personalizados**: Agrega extensiones en `Sources/RequestIOBusiness/Extensions/`
 3. **Ejemplos**: Contribuye apps de ejemplo en `Examples/`
 
 ## Roadmap
@@ -279,8 +281,9 @@ Este proyecto está licenciado bajo MIT License.
 ## Links
 
 - **Backend Repository**: [request-io_back](https://github.com/Byjuanamn/request-io_back)
+- **Admin SDK**: [request-io-swift-admin-client](https://github.com/Byjuanamn/request-io-swift-admin-client)
 - **API Documentation**: [Backend Docs](https://github.com/Byjuanamn/request-io_back/tree/main/docs)
-- **Issues**: [GitHub Issues](https://github.com/Byjuanamn/request-io-swift-sdk-client/issues)
+- **Issues**: [GitHub Issues](https://github.com/Byjuanamn/request-io-swift-business-sdk/issues)
 
 ---
 
